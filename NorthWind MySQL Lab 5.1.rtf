@@ -1,0 +1,75 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica-BoldOblique;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww18280\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 1. SELECT * FROM Customers;\
+\
+2. SELECT DISTINCT country_region FROM Customers;\
+\
+3. SELECT * FROM Customers WHERE job_title LIKE 'Pur%'; 
+\f1\i (Changed to job_title contains \'93pur\'94 b/c all id are numeric)\
+
+\f0\i0 \
+4. SELECT *FROM Orders ORDER BY order_date LIMIT 10; 
+\f1\i (changed to 10 due to table size > 100)\
+\
+
+\f0\i0 5. SELECT * FROM Customers WHERE state_province='WA' OR state_province= 'MA' OR state_province= 'CO'; 
+\f1\i (changed to states since all zip codes are the same)\
+\
+
+\f0\i0 6. 
+\f1\i ship_country_region is all the same\
+
+\f0\i0 \
+7. SELECT * FROM Customers ORDER BY country_region, state_province;\
+\
+8. INSERT INTO `customers` (`id`, `company`, `last_name`, `first_name`, `email_address`, `job_title`, `business_phone`, `home_phone`, `mobile_phone`, `fax_number`, `address`, `city`, `state_province`, `zip_postal_code`, `country_region`, `web_page`, `notes`, `attachments`) VALUES (89, 'Company ZED', 'KittyBoy', 'Stefon', NULL, 'Receptionist', '(313)228-6369', NULL, NULL, '(313)366-8389', '999 This Street', 'Detroit', 'MI', '48204', 'USA', NULL, NULL, '');\
+\
+9. 
+\f1\i No one from France :(\
+
+\f0\i0 \
+10. DELETE FROM order_details WHERE quantity = '0'; 
+\f1\i (none have a quantity of 1)\
+
+\f0\i0 \
+11. SELECT AVG (quantity) FROM order_details;\
+\
+SELECT MAX(quantity) FROM order_details;\
+\
+SELECT MIN(quantity) FROM order_details;\
+\
+12. SELECT AVG(quantity) FROM order_details GROUP BY order_id;\
+\
+SELECT MAX(quantity) FROM order_details GROUP BY order_id;\
+\
+SELECT MIN(quantity) FROM order_details GROUP BY order_id;\
+\
+13. SELECT * FROM orders WHERE id='32'; 
+\f1\i (changed ID to 32 instead of 10290)\
+\
+
+\f0\i0 14. Inner join - SELECT * FROM orders INNER JOIN customers \
+ON orders.ship_city = customers.city;\
+\
+Left join - SELECT * FROM orders LEFT JOIN customers \
+ON orders.ship_city = customers.city;\
+\
+Right join - SELECT * FROM orders RIGHT JOIN customers \
+ON orders.ship_city = customers.city;\
+\
+15. SELECT orders.ship_city, orders.ship_state_province, customers.company FROM orders INNER JOIN customers \
+ON orders.ship_city = customers.city WHERE ship_state_province='WA'; 
+\f1\i (changed from London to WA)
+\f0\i0 \
+\
+16. SELECT orders.ship_name, order_details.product_id, orders.id FROM order_details LEFT JOIN orders\
+ON order_details.id = orders.id WHERE product_id='1';\
+\
+17.\
+\
+18.}
